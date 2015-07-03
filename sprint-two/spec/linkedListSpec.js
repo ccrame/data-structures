@@ -51,5 +51,27 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should contain a value if duplicates were added and only some removed', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(4);
+    linkedList.addToTail(4);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.contains(4)).to.equal(true);
+  });
+
+  it('should not contain a value if duplicates were added and all removed', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(4);
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.contains(4)).to.equal(false);
+  });
+
   // add more tests here to test the functionality of linkedList
 });
