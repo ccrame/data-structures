@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stack and Queue Testing Page</title>
+    <script src="pseudoclassical/stack.js"></script>
+    <script src="pseudoclassical/queue.js"></script>
+  </head>
+  <body>
+    <script>
+      for (var i = 0; i < 3000000; i++) {
+        new Queue();
+      }
+      for (var i = 0; i < 3000000; i++) {
+        new Stack();
+      }
+      console.log('done!');
+    </script>
+
+<!-- 
+  When instantiating 1,000,000 versions of Queue and Stack, these were some results for CPU Profiles:
+  Functional - 614.4 ms for Queue, 528.0 ms for Stack
+  Functional-Shared - 178.4 ms for Queue, 158.6 ms for Stack
+  Prototypal - 9.4 ms for Queue, 3.1 ms for Stack
+  Pseudoclassical - 2.1 ms for Queue, 1.0 ms for Stack
+ -->
+  </body>
+</html>
