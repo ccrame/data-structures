@@ -69,4 +69,8 @@ HashTable.prototype.resize = function(size){
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * insert: if no resize -> constant time, else linear
+ * retrieve: constant time
+ * remove: if no resize -> constant time, else linear
+ * resize: linear time
  */
