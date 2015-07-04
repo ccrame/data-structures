@@ -52,5 +52,6 @@ var Node = function(value){
  *
  * addToTail and removeHead should both be O(1) constant time operations
  * contains should be a O(n) linear time operation
+ * Node constructor is constant O(1) time
  *
  */
