@@ -5,14 +5,30 @@ var HashTable = function(){
 };
 
 HashTable.prototype.insert = function(k, v){
-  this.counter++;
+  var i = getIndexBelowMaxForKey(k, this._limit);
+  var bucket = this._storage.get(i) || [];
+  var wasChanged = false;
+  //iterate over bucket
+  for(var index = 0; index < bucket.length; ++index){
+    //check if any 1st element in tuple matches key
+    if(bucket[index][0] === k){
+      //overwrite 2nd element in bucket if true
+      bucket[index][1] = v;
+      //change wasChanged to true 
+      wasChanged = true;
+    }
+  }
+  //if !wasChanged push new tuple into bucket
+  if(!wasChanged){
+    bucket.push([k,v]);
+    this.counter++;
+  }
+  //put bucket back in storage
+  this._storage.set(i, bucket);
+
   if(this.counter > this._limit * 3 / 4){
     this.resize(this._limit * 2);
   }
-  var i = getIndexBelowMaxForKey(k, this._limit);
-  var bucket = this._storage.get(i) || [];
-  bucket.push([k,v]);
-  this._storage.set(i, bucket);
 };
 
 HashTable.prototype.retrieve = function(k){
